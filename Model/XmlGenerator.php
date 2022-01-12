@@ -473,6 +473,7 @@ class XmlGenerator
         {
             $this->domDocument = new \DOMDocument($this->getVersion(), $this->getEncoding());
             $this->domDocument->formatOutput = $this->formatOutputFlag;
+            $this->domDocument->xmlStandalone = true;
         }
 
         return $this->domDocument;
