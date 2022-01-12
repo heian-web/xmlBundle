@@ -1,5 +1,5 @@
 {
-  "name": "heian-web/xml-bundle",
+  "name": "heian/desperado-xml-bundle",
   "type": "symfony-bundle",
   "description": "Symfony XmlBundle",
   "keywords": [
