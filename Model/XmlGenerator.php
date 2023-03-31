@@ -336,6 +336,7 @@ class XmlGenerator
         if(!is_array($data))
         {
             $data = $this->getBooleanAsString($data);
+            $data = $this->getNullAsString($data);
 
             $node->appendChild(
                 $this->getDomDocument()->createTextNode($data)
@@ -430,6 +431,7 @@ class XmlGenerator
                 if(true === $this->isValidElementName($key))
                 {
                     $value = $this->getBooleanAsString($value);
+                    $value = $this->getNullAsString($value);
 
                     $node->setAttribute($key, $value);
                 }
@@ -450,13 +452,30 @@ class XmlGenerator
      *
      * @param mixed $elementValue
      *
-     * @return string
+     * @return string|mixed
      */
     protected function getBooleanAsString($elementValue)
     {
         if(is_bool($elementValue))
         {
             $elementValue = (true === $elementValue) ? 'true' : 'false';
+        }
+
+        return $elementValue;
+    }
+
+    /**
+     * Converting null values to the empty string
+     *
+     * @param mixed $elementValue
+     *
+     * @return string|mixed
+     */
+    protected function getNullAsString($elementValue)
+    {
+        if(null === $elementValue)
+        {
+            $elementValue = '';
         }
 
         return $elementValue;
